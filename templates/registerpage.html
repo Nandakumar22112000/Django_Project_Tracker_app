@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    {% load static %}
+    {% include 'border.html' %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+    th, td {
+padding-top:4px;
+padding-bottom:4px;
+padding-left:45px;
+padding-right:0px;
+}
+</style>
+</head>
+
+<body>
+<form method="post" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<center>
+    <div class="card shadow m-5" style="width:500px">
+    <div class="card-body">
+
+
+   <h5 class="p-2 text-danger" align="left" style="border-bottom : 2px solid orange">Create New Account</h5>
+        <table>
+            <tr>
+                <td>
+                    <label>Full Name</label>
+                </td>
+                <td>
+                    <input type="text" name="name" placeholder="full name" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Designation</label>
+                </td>
+                <td>
+                    <input type="text" name="designation" placeholder="designation" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Gender</label>
+                </td>
+
+                <td>
+                    <select name="gender" id="gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>email</label>
+                </td>
+
+                <td>
+                    <input type="email" name="email" placeholder="mail id" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Team</label>
+                </td>
+
+                <td>
+                    <select name="team" id="team" required>
+                        {% for i in value %}
+                        <option value="{{i.Team_Name}}">{{i.Team_Name}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Team_Lead</label>
+                </td>
+
+                <td>
+                    <div>
+                        <label for="teamlead-yes">Yes</label>
+                        <input type="radio" id="teamlead-yes" name="teamlead" value="yes">
+                        <label for="teamlead-no">No</label>
+                        <input type="radio" id="teamlead-no" name="teamlead" value="no">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Address</label>
+                </td>
+
+                <td>
+                    <input type="text" name="address" placeholder="address" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Username</label>
+                </td>
+                <td>
+                    <input type="text" name="username" placeholder="username" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+
+                <td>
+                    <input type="password" name="password" placeholder="password" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Contact</label>
+                </td>
+
+                <td>
+                    <input type="text" name="contact" placeholder="contact" pattern="[0-9]+" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Picture</label>
+                </td>
+
+                <td>
+                    <input type="File" name="picture" required>
+                </td>
+            </tr>
+
+        </table>
+        <br>
+         <input type="submit" align="left" value="submit" class="btn btn-primary">
+    </div>
+  </div>
+    </center>
+</form>
+</body>
+
+</html>

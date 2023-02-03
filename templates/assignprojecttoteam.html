@@ -1,0 +1,135 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+  <h1>Assign Project To Team</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table>
+      <tr>
+          <td>
+              <label>Choose Team</label>
+          </td>
+          <td>
+              <select name="team" id="team" required>
+                  {% for i in value %}
+                  <option value="{{i.Team}}">{{i.Team}}</option>
+                  {% endfor %}
+              </select>
+          </td>
+      </tr>
+      <tr>
+        <td><label>Project Name</label></td>
+        <td>
+            <select name="project_name" id="prjct" required>
+                  {% for i in val %}
+                  <option value="{{i.Project_Name}}">{{i.Project_Name}}</option>
+                  {% endfor %}
+              </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Upload Project</label></td>
+        <td>
+            <input type="file" name="prjct">
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <label>Deadline</label>
+          </td>
+          <td>
+              <input type="date" name="deadline">
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <input type="submit" value="upload">
+          </td>
+      </tr>
+  </table>
+    <br>
+
+  </form>
+</center>
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<form method="post" enctype="multipart/form-data">
+
+{% csrf_token %}
+<center>
+
+    {% load static %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0">
+                <img src="{% static 'images/profileimage.png' %}" width="150" height="125">
+                <br>
+                <br>
+                <div class="list-group">
+                    <a href="" class="list-group-item list-group-item-dark list-group-item-action">Dashboard</a>
+                    <a href="/managerpage/" class="list-group-item list-group-item-warning list-group-item-action">Home</a>
+                    <a href="/completedprojects" class="list-group-item list-group-item-warning list-group-item-action">Pending Projects</a>
+                    <a href="/unfinishedproject/" class="list-group-item list-group-item-warning list-group-item-action">Unfinished Project Lists</a>
+                    <a href="/verifiedprojects" class="list-group-item list-group-item-warning list-group-item-action">Verified Projects</a>
+                    <a href="/newprojects" class="list-group-item list-group-item-warning list-group-item-action">New Projects</a>
+                    <a href="/assignprojectstoteam" class="list-group-item list-group-item-warning list-group-item-action">Assign Projects To Team</a>
+                    <a href="/employeedetail" class="list-group-item list-group-item-warning list-group-item-action">Employee Details</a>
+                </div>
+            </div>
+            <div class="col-sm-10 p-2">
+                <div class="container-fluid p-2">
+                    <h1 style="border-bottom: 3px solid red; color:navy">ASSIGN PROJECTS TO TEAM</h1>
+                </div>
+                <center>
+                <div class="card shadow m-5" align="left" style="width:500px">
+                    <div class="card-body">
+                        <label>Choose Team</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<select name="team" id="team" required>
+                            {% for i in value %}
+                            <option value="{{i.Team}}">{{i.Team}}</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <label>Project Name</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<select name="project_name" id="prjct" required>
+                                {% for i in val %}
+                                <option value="{{i.Project_Name}}">{{i.Project_Name}}</option>
+                                {% endfor %}
+                            </select>
+                        <br>
+                        <label>Upload Project</label>&nbsp;&nbsp;&nbsp;<input type="file" name="prjct">
+                        <br>
+                        <label> Deadline </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="deadline">
+                        <br>
+                        <input type="submit" value="upload" class="btn btn-primary">
+                    </div>
+                </div>
+                </center>
+            </div>
+            </div>
+        </div>
+
+</center>
+</form>
+</body>
+</html>
